@@ -3,7 +3,7 @@ name: "Learning Github action"
 on:
   push:
     branches: 
-      # - dev
+      - dev
       # - develop
       - aq
 
@@ -34,10 +34,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-        run: |
-          cd python
-          chmod + x script.py
-          python script.py
+          run: |
+            cd python
+            chmod + x script.py
+            python script.py
 
 
 
