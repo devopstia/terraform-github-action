@@ -104,7 +104,7 @@ jobs:
         env:
           ECR_REGISTRY: 788210522308.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: github_action
-          IMAGE_TAG: lastest
+          IMAGE_TAG: html_apps
       
       - name: Login to Amazon ECR
         id: login-ecr
