@@ -55,6 +55,8 @@ jobs:
     steps: 
       - name: awscli
         run: |
+          cat /etc/*release
+          aws --version
           apt update
           apt install unzip -y 
           apt install curl -y
