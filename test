@@ -8,35 +8,33 @@ on:
       - aq
 
 jobs:
-  list_buckets:
-    name: "list_buckets"
+  aws:
+    name: "aws s3"
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: "us-east-1"
+
     steps: 
-      - name: Check the AWS cli version and syst info
+      - name: checkout 
+        uses: actions/checkout@v3
+    
+      - name: awscli
         run: |
           cat /etc/*release
           aws --version
-      - name: "List s3 buckets"
+
+      - name: check buckets
         run: |
           aws s3 ls
           ls -l
-
-  run_python_script:
-    name: "run_python_script"
-    runs-on: ubuntu-latest
-    steps: 
-      - name: checkout the source code
-        uses: actions/checkout@v3
-
+       
       - name: Run python script 
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-          
+
       - name: execute the python script 
         run: |
           cd python
@@ -45,8 +43,3 @@ jobs:
           python script.py
 
 
-
-
-
-
-    
