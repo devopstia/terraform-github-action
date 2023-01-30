@@ -3,8 +3,9 @@ name: "Learning Github action"
 on:
   push:
     branches: 
-      - dev
-      - develop
+      # - dev
+      # - develop
+      - aq
 
 jobs:
   aws:

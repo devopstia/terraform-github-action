@@ -3,8 +3,8 @@ name: "Terraform Plan"
 on:
   push:
     branches: 
-      - master
-      - aq
+      # - master
+      - dev
 
 jobs:
   authentification:
