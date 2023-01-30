@@ -31,7 +31,7 @@ jobs:
        
       - name: Run python script 
         uses: actions/setup-python@v4
-         with:
+        with:
           python-version: '3.9'
         run: |
           cd python
