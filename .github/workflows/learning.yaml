@@ -118,9 +118,8 @@ jobs:
 
           echo "PBuilding The image..."
           docker build -t html_apps .
-          docker tag html_apps:latest leonardtia/github-ation:html_apps 
+          docker tag html_apps:latest leonardtia/github-ation:$MAGE_TAG
           docker tag html_apps:latest $ECR_REGISTRY/$ECR_REPOSITORY:$MAGE_TAG
-          docker push leonardtia/github-ation:html_apps
 
           echo "Pushing image to Docker Hub..."
           docker push leonardtia/github-ation:html_apps
