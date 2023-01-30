@@ -97,5 +97,9 @@ jobs:
 
       - name: Build and push image to dockerhub
         run: |
+          docker --version 
           cd app 
           ls
+          docker build -t leonardtia/github-ation:html_apps .
+          docker push -t leonardtia/github-ation:html_apps
+          
