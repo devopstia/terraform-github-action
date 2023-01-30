@@ -3,7 +3,7 @@ name: "Learning Github action"
 on:
   push:
     branches: 
-      - dev
+      # - dev
       - develop
 
 jobs:
