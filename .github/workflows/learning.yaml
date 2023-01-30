@@ -101,16 +101,16 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-        env:
-          ECR_REGISTRY: 788210522308.dkr.ecr.us-east-1.amazonaws.com
-          ECR_REPOSITORY: github_action
-          IMAGE_TAG: html_apps
       
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and push image to dockerhub and ECR
+        env:
+          ECR_REGISTRY: 788210522308.dkr.ecr.us-east-1.amazonaws.com
+          ECR_REPOSITORY: github_action
+          IMAGE_TAG: html_apps
         run: |
           docker --version 
           cd app 
@@ -119,11 +119,11 @@ jobs:
           echo "PBuilding The image..."
           docker build -t html_apps .
           docker tag html_apps:latest leonardtia/github-ation:html_apps
-          docker tag html_apps:latest 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:html_apps
+          docker tag html_apps:latest 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$IMAGE_TAG
 
           echo "Pushing image to Docker Hub..."
           docker push leonardtia/github-ation:html_apps
 
           echo "Pushing image to ECR..."
-          docker push 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:html_apps
+          docker push 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$IMAGE_TAG
           
