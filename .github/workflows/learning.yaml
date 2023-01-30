@@ -81,11 +81,37 @@ jobs:
           terraform plan
           terraform apply -auto-approve
 
+  docker-build:
+    name: "docker-build"
+    runs-on: ubuntu-latest
+    steps: 
+
+      - name: checkout the source code
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push image to dockerhub
+        run: |
+          cd app 
+          ls
+           
+
          
 
       
 
-
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        
+```
 
 
     
