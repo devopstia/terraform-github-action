@@ -8,7 +8,6 @@ on:
       - aq
 
 jobs:
-
   aws:
     name: "aws s3"
     runs-on: ubuntu-latest
