@@ -15,6 +15,8 @@ jobs:
       steps: 
         - name: checkout the source code
           uses: actions/checkout@v3
+          run: |
+          ls -l
           
   list_buckets:
     name: "list_buckets"
