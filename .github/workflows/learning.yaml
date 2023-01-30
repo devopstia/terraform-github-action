@@ -118,12 +118,12 @@ jobs:
 
           echo "PBuilding The image..."
           docker build -t html_apps .
-          # docker tag html_apps:latest leonardtia/github-ation:$MAGE_TAG
-          docker tag html_apps:latest 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$MAGE_TAG
+          docker tag html_apps:latest leonardtia/github-ation:$MAGE_TAG
+          # docker tag html_apps:latest 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$MAGE_TAG
 
           echo "Pushing image to Docker Hub..."
           docker push leonardtia/github-ation:$MAGE_TAG
 
-          echo "Pushing image to ECR..."
-          docker push 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$MAGE_TAG
+          # echo "Pushing image to ECR..."
+          # docker push 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$MAGE_TAG
           
