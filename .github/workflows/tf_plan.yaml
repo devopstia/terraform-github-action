@@ -60,6 +60,7 @@ jobs:
       - name: check buckets
         run: |
           aws s3 ls
+          ls -l
 
 
 
