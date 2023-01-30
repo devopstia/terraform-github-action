@@ -3,8 +3,7 @@ name: "Terraform Plan"
 on:
   push:
     branches: 
-      - dev
-      - develop
+      - master
 
 jobs:
   authentification:
@@ -17,7 +16,7 @@ jobs:
 
     steps: 
       - name: checkout 
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@vv3.1.0
 
       - name: Setup Terraform 
         uses: hashicorp/setup-terraform@v2.0.2
@@ -43,3 +42,6 @@ jobs:
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
+      
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
