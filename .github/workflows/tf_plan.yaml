@@ -17,10 +17,10 @@ jobs:
 
       steps: 
         - name: checkout 
-          users: actions/checkout@v2
+          uses: actions/checkout@v2
 
         - name: Setup Terraform 
-          users: hashicorp/setup-terraform@v1
+          uses: hashicorp/setup-terraform@v1
           with:
           terraform_version: "1.0.0"
           cli_config_credentials_token: ${{ secrets.CLI_CONFIG_CREDENTIALS_TOKEN }}
@@ -31,7 +31,9 @@ jobs:
 
         - name: Terraform Validate
           id: validate
-          run: terraform validate
+          run: |
+            terraform fmt
+            terraform validate
 
         - name: Terraform Plan
           id: plan
