@@ -101,5 +101,5 @@ jobs:
           cd app 
           ls
           docker build -t leonardtia/github-ation:html_apps .
-          docker push -t leonardtia/github-ation:html_apps
+          docker push leonardtia/github-ation:html_apps
           
