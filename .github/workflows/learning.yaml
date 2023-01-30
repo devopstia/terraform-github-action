@@ -37,6 +37,7 @@ jobs:
           python-version: '3.9'
           run: |
             cd python
+            ls -l 
             chmod + x script.py
             python script.py
 
