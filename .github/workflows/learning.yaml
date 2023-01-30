@@ -102,17 +102,18 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+        env:
+          ECR_REGISTRY: 
+          ECR_REPOSITORY: 788210522308.dkr.ecr.us-east-1.amazonaws.com/github_action
+          IMAGE_TAG: lastest
       
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build, tag, and push the image to Amazon ECR
-        id: build-image
-        env:
-          ECR_REGISTRY: 
-          ECR_REPOSITORY: 788210522308.dkr.ecr.us-east-1.amazonaws.com/github_action
-          IMAGE_TAG: lastest
+      # - name: Build, tag, and push the image to Amazon ECR
+      #   id: build-image
+       
 
       - name: Build and push image to dockerhub
         run: |
