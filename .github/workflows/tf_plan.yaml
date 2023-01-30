@@ -1,0 +1,43 @@
+name: "Terraform Plan"
+
+on:
+  push:
+    branches: 
+      - dev
+      - develop
+
+jobs:
+  authentification:
+    name: "Terraform"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+
+      steps: 
+        - name: checkout 
+          users: actions/checkout@v2
+
+        - name: Setup Terraform 
+          users: hashicorp/setup-terraform@v1
+          with:
+          terraform_version: "1.0.0"
+          cli_config_credentials_token: ${{ secrets.CLI_CONFIG_CREDENTIALS_TOKEN }}
+
+        - name: Terraform Init
+          id: init
+          run: terraform init
+
+        - name: Terraform Validate
+          id: validate
+          run: terraform validate
+
+        - name: Terraform Plan
+          id: plan
+          run: terraform plan
+          continue-on-error: true
+
+        - name: Terraform Plan Status
+          if: steps.plan.outcome == 'failure'
+          run: exit 1
