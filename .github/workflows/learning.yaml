@@ -118,7 +118,7 @@ jobs:
 
           echo "PBuilding The image..."
           docker build -t html_apps .
-          docker tag html_apps:latest leonardtia/github-ation:$MAGE_TAG
+          # docker tag html_apps:latest leonardtia/github-ation:$MAGE_TAG
           docker tag html_apps:latest 788210522308.dkr.ecr.us-east-1.amazonaws.com/github_action:$MAGE_TAG
 
           echo "Pushing image to Docker Hub..."
