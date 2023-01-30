@@ -57,12 +57,11 @@ jobs:
     steps: 
       - name: Install terraform 
         run: |
-          apt update
-          apt install wget -y 
+          sudo apt update
+          sudo apt install wget -y 
           wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip
-          unzip terraform_1.0.0_linux_amd64.zip
-          ./terraform
-          mv terraform /usr/local/bin
+          sudo unzip terraform_1.0.0_linux_amd64.zip
+          sudo mv terraform /usr/local/bin
           terraform -version
 
 
