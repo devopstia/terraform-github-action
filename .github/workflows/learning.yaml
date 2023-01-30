@@ -40,7 +40,7 @@ jobs:
         run: |
           cd python
           ls -l 
-          chmod + x script.py
+          chmod +x script.py
           python script.py
 
 
