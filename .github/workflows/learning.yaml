@@ -156,7 +156,7 @@ jobs:
           terraform validate
           terraform fmt
           terraform plan
-          # terraform apply -auto-approve    
+          terraform apply -auto-approve    
 
 
   deploy-application:
@@ -183,6 +183,8 @@ jobs:
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 
           chmod +x get_helm.sh && ./get_helm.sh
 
-          # aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+          aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+
+          kubectl get nodes
 
           
