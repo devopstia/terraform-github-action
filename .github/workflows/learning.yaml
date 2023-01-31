@@ -158,8 +158,9 @@ jobs:
           # terraform apply -auto-approve    
 
   login-into-cluster:
-    needs: docker-build
-    needs: create-eks-cluster
+    needs: 
+      - docker-build
+      - create-eks-cluster
     name: "login-into-cluster"
     runs-on: ubuntu-latest
     env:
