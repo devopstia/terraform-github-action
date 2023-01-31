@@ -82,6 +82,7 @@ jobs:
           terraform apply -auto-approve
 
   docker-build:
+    needs: run_terraform
     name: "docker-build"
     runs-on: ubuntu-latest
     steps: 
