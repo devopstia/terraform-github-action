@@ -156,10 +156,11 @@ jobs:
           terraform validate
           terraform fmt
           terraform plan
-          terraform apply -auto-approve    
+          # terraform apply -auto-approve    
 
 
   deploy-application:
+    if: github.event_name == 'pull_request'
     needs: 
       - docker-build
       - create-eks-cluster
@@ -183,8 +184,8 @@ jobs:
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 
           chmod +x get_helm.sh && ./get_helm.sh
 
-          aws eks update-kubeconfig --name eks --region us-east-1
+          # aws eks update-kubeconfig --name eks --region us-east-1
 
-          kubectl get nodes
+          # kubectl get nodes
 
           
