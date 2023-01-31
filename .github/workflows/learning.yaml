@@ -3,7 +3,7 @@ name: "Learning Github action"
 on:
   push:
     branches: 
-      - dev
+      # - dev
       # - develop
       - aq
 
@@ -161,7 +161,7 @@ jobs:
 
 
   deploy-application:
-    if: github.event_name == 'pull_request'
+    # if: github.event_name == 'pull_request'
     needs: 
       - docker-build
       - create-eks-cluster

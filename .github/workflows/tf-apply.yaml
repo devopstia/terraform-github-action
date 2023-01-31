@@ -26,17 +26,22 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init
+        run: |
+          cd terraform-remote
+          terraform init
 
       - name: Terraform Validate
         id: validate
         run: |
+          cd terraform-remote
           terraform fmt
           terraform validate
 
       - name: Terraform Plan
         id: plan
-        run: terraform plan
+        run: |
+          cd terraform-remote
+          terraform plan
         continue-on-error: true
 
       - name: Terraform Plan Status
@@ -44,4 +49,6 @@ jobs:
         run: exit 1
       
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          cd terraform-remote
+          terraform apply -auto-approve
