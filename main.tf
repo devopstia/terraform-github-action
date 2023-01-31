@@ -14,13 +14,13 @@ provider "aws" {
   secret_key = var.secret_key
 }
 
-resource "aws_instance" "app_server1" {
-  ami           = var.ami
-  instance_type = var.instance_type
-  tags = {
-    Name = "web-server-0"
-  }
-}
+# resource "aws_instance" "app_server1" {
+#   ami           = var.ami
+#   instance_type = var.instance_type
+#   tags = {
+#     Name = "web-server-0"
+#   }
+# }
 
 variable "user_names" {
   description = "IAM usernames"
