@@ -128,3 +128,34 @@ jobs:
           echo "Pushing image to ECR..."
           docker push 788210522308.dkr.ecr.us-east-1.amazonaws.com/applications:$IMAGE_TAG
           
+
+  create-eks-cluster:
+    needs: docker-build
+    name: "run_terraform"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+    steps: 
+      - name: Install terraform 
+        run: |
+          sudo apt update
+          sudo apt install wget -y 
+          wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip
+          sudo unzip terraform_1.0.0_linux_amd64.zip
+          sudo mv terraform /usr/local/bin
+          terraform -version
+
+      - name: checkout the source code
+        uses: actions/checkout@v3
+
+      - name: terraform plan
+        run: |
+          cd eks 
+          ls -l 
+          # terraform init
+          # terraform validate
+          # terraform fmt
+          # terraform plan
+          # terraform apply -auto-approve        
