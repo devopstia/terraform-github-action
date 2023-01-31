@@ -177,4 +177,24 @@ jobs:
           sudo mv kubectl /usr/local/bin
 
           # aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+
+
+  deploy-application:
+    needs: 
+      - docker-build
+      - create-eks-cluster
+      - login-into-cluster
+    name: "deploy-application"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+    steps: 
+      - name: deploy application
+        run: |
+          sudo apt update
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 \
+          chmod +x get_helm.sh && ./get_helm.sh
+
           
