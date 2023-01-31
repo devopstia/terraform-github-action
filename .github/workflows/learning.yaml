@@ -155,4 +155,20 @@ jobs:
           terraform validate
           terraform fmt
           terraform plan
-          # terraform apply -auto-approve        
+          # terraform apply -auto-approve    
+
+  login-into-cluster:
+    needs: docker-build
+    needs: create-eks-cluster
+    name: "login-into-cluster"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: "us-east-1"
+    steps: 
+      - name: Login and run kubectl
+        run: |
+          # aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
+          ls
+          kubectl --version
