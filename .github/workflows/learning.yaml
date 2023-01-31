@@ -53,7 +53,7 @@ jobs:
 
   run_terraform:
     name: "run_terraform"
-    if: github.event_name == 'pull_request'
+    # if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -171,6 +171,10 @@ jobs:
     steps: 
       - name: Login and run kubectl
         run: |
+          sudo apt update
+          sudo curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/kubectl 
+          sudo chmod +x ./kubectl 
+          sudo mv kubectl /usr/local/bin
+
           # aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
-          ls
           
