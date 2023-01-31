@@ -138,14 +138,11 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: "us-east-1"
     steps: 
-      - name: Install terraform 
-        run: |
-          sudo apt update
-          sudo apt install wget -y 
-          wget https://releases.hashicorp.com/terraform/1.0.0/terraform_1.0.0_linux_amd64.zip
-          sudo unzip terraform_1.0.0_linux_amd64.zip
-          sudo mv terraform /usr/local/bin
-          terraform -version
+      - name: Setup Terraform 
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: "1.0.0"
+          cli_config_credentials_token: ${{ secrets.CLI_CONFIG_CREDENTIALS_TOKEN }}
 
       - name: checkout the source code
         uses: actions/checkout@v3
