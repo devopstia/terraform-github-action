@@ -131,7 +131,7 @@ jobs:
 
   create-eks-cluster:
     needs: docker-build
-    name: "run_terraform"
+    name: "create-eks-cluster"
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -150,12 +150,12 @@ jobs:
       - name: checkout the source code
         uses: actions/checkout@v3
 
-      - name: terraform plan
+      - name: Create eks cluster
         run: |
           cd eks 
           ls -l 
-          # terraform init
-          # terraform validate
-          # terraform fmt
-          # terraform plan
+          terraform init
+          terraform validate
+          terraform fmt
+          terraform plan
           # terraform apply -auto-approve        
