@@ -172,4 +172,4 @@ jobs:
         run: |
           # aws eks update-kubeconfig --name my-eks-cluster --region us-east-1
           ls
-          kubectl --version
+          kubectl version
