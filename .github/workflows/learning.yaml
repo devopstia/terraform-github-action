@@ -3,7 +3,7 @@ name: "Learning Github action"
 on:
   push:
     branches: 
-      # - dev
+      - dev
       # - develop
       - aq
 
@@ -157,7 +157,7 @@ jobs:
           terraform fmt
           terraform plan
           # terraform apply -auto-approve   
-          terraform destroy -auto-approve   
+          # terraform destroy -auto-approve   
 
 
   deploy-application:

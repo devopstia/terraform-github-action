@@ -26,6 +26,6 @@ provider "aws" {
 #   name = "user2"
 # }
 
-resource "aws_iam_user" "user3" {
-  name = "user3"
-}
+# resource "aws_iam_user" "user3" {
+#   name = "user3"
+# }
