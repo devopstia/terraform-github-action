@@ -1,13 +1,3 @@
-# terraform {
-#   backend "remote" {
-#     organization = "LEARNING01-ORG"
-
-#     workspaces {
-#       name = "dev"
-#     }
-#   }
-# }
-
 provider "aws" {
   region     = "us-east-1"
   access_key = var.access_key
