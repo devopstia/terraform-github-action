@@ -12,19 +12,19 @@ provider "aws" {
 #   }
 # }
 
-variable "user_names" {
-  description = "IAM usernames"
-  type        = list(string)
-  default     = ["user1", "user2", "user3"]
-}
+# variable "user_names" {
+#   description = "IAM usernames"
+#   type        = list(string)
+#   default     = ["user1", "user2", "user3"]
+# }
 
-resource "aws_iam_user" "user1" {
-  name = "user1"
-}
+# resource "aws_iam_user" "user1" {
+#   name = "user1"
+# }
 
-resource "aws_iam_user" "user2" {
-  name = "user2"
-}
+# resource "aws_iam_user" "user2" {
+#   name = "user2"
+# }
 
 resource "aws_iam_user" "user3" {
   name = "user3"
